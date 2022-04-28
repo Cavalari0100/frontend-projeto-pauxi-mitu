@@ -20,7 +20,7 @@ function App(props) {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/login' exact component={LoginPage}/>
-          <Route path='/postagem/:id' render={(props)=> <Noticia {...props}/>}/>
+          <Route path='/postagem/:id' component={Noticia}/>
           <Route path='/historia' exact component={Historia}/>
           <Route path='/cadastronoticia' exact component={CadastroNoticia}/>
           <Route path='/paraisodasaves' exact component={HomeParaisoDasAves}/>

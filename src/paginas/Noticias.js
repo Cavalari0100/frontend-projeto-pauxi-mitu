@@ -6,14 +6,17 @@ function Noticia(props) {
 
     useEffect(() => {
         const GetData = async () => {
-            const result = await axios('http://localhost:3001/postagem/625feef27c1ad2f03f02e7f1');
+            const result = await axios('http://localhost:3001/postagem/' + props.match.params.id);
             setData(result.data);
         };
 
         GetData();
 
     }, []);
-    
+    console.log(props.match.params.id)
+    let noticia = {
+        titulo : data.titulo
+    }
     return (
 
         <Container
@@ -25,18 +28,22 @@ function Noticia(props) {
                     <Container>
                         <Row>
                             <Col></Col>
-                            <Col><h1>{data.titulo}</h1></Col>
+                            <Col sm='12'><h1>{data.titulo}</h1></Col>
                             <Col></Col>
                         </Row>
+                        <hr></hr>
                         <Row>
-                            <Col><h2 >{data.conteudo}</h2></Col>
-                            <Col></Col>
-                            <Col></Col>
+                            <Container>
+                            <Col><h3 style={{textAlign:'justify'}} >{data.conteudo}</h3></Col>
+                            </Container>
                         </Row>
+                        <hr></hr>
                         <Row>
+                            <Container>
+                            <Col><h4 style={{color:'gray'}} >{data.autor}</h4></Col>
                             <Col></Col>
-                            <Col><h3>{data.auto}</h3></Col>
                             <Col></Col>
+                            </Container>
                         </Row>
                     </Container>
         </Container>

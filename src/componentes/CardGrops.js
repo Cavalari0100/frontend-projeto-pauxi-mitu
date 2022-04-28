@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { CardGroup, Card, Col, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button, Container, Row } from "reactstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 function Cardgroups(props) {
     const [data, setData] = useState([]);
-    const [id,setId] = useState([]);
-    
+    const [id, setId] = useState([]);
+
     useEffect(() => {
         const GetData = async () => {
             const result = await axios('http://localhost:3001/postagem');
@@ -12,17 +15,21 @@ function Cardgroups(props) {
         };
 
         GetData();
-        
+
     }, []);
     const ultimo = data.length;
     const antepenltimo = data.length - 3;
-    console.log(data)
+    /* console.log(data) */
+
+      const attPage = (e) => {
+        window.location.reload();
+    }
     return (
         <Row
             md="3"
             sm="2"
             xs="1">
-            
+
             <br></br>
             {data.slice(antepenltimo, ultimo).map((postagem, index) => {
                 const ultimo = data.length - 1;
@@ -49,8 +56,8 @@ function Cardgroups(props) {
                                 <CardText>
                                     <p key={postagem} style={{ maxWidth: "50ch", overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{postagem.conteudo}</p>
                                 </CardText>
-                                <Button >
-                                    <p key={postagem}>Mais...</p>
+                                <Button onClick={attPage}>
+                                    <Link key={postagem} to={"/postagem/" + postagem._id}>Mais..</Link>
                                 </Button>
                             </CardBody>
                         </Card>

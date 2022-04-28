@@ -62,9 +62,9 @@ function BarraDeTarefas() {
                             </DropdownMenu>
                         </UncontrolledDropdown>
                     </Nav>
-                    <NavbarBrand>
+                    {/* <NavbarBrand>
                      <img src="assets/logo-paraiso-das-aves.png" width='60px'></img>
-                    </NavbarBrand>
+                    </NavbarBrand> */}
                     <Nav>
                         <NavItem>
                             <NavLink href="/paraisodasaves" style={{color:'white'}}>

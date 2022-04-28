@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { Container, Row } from "reactstrap";
+import { Button, Container, Row } from "reactstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 function SlideImg() {
     const [data, setData] = useState([]);
 
@@ -17,6 +18,10 @@ function SlideImg() {
     }, []);
     const ultimo = data.length;
     const antepenltimo = data.length - 6;
+    
+    const attPage = (e) => {
+        window.location.reload();
+    }
 
     return (
         <div>
@@ -27,7 +32,7 @@ function SlideImg() {
                             return (
                                 <div>
                                     <img src="assets/img-10.jpeg" />
-                                    <p className="legend" key={postagem}>{postagem.titulo}</p>
+                                    <Button onClick={attPage}><Link to={"/postagem/" + postagem._id}><p className="legend" key={postagem}>{postagem.titulo}</p></Link></Button>
                                 </div>
                             )
                         })}
